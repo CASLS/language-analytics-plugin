@@ -1,5 +1,5 @@
 (function ( $ ) {
-    var wordtreeRootWord = '';
+	var wordtreeRootWord = '';
 	var wordtreeType = 'suffix';
 	var allComments = [['Phrases'],["This is a test comment"], ["This is another test comment"], ["This is a third test comment"]];
 	var commentWords = [];
@@ -7,32 +7,26 @@
 	
     $.fn.WordCloudWithTree = function(options) {
     	// This is the easiest way to have default options.
-        var settings = $.extend({
-            // These are the defaults.
-        	wordtreeRootWord: wordtreeRootWord,
-        	wordtreeType: wordtreeType,
-        	allComments: allComments,
-        	commentWords: commentWords
-        }, options );
+        var settings = $.extend({}, $.fn.WordCloudWithTree.defaults, options );
         
         var container = $(this);
         container.append("<div id='commentsWordCloud'></div>");
         var wordTreeButtons = 
         	'<div class="btn-toolbar" role="toolbar" aria-label="...">' + 
 				'<div class="btn-group" role="group" aria-label="...">' + 
-					'<button type="button" class="btn btn-default" onclick="wordtreeType = \'prefix\';drawChart();">Prefix</button>' +
-			 		'<button type="button" class="btn btn-default" onclick="wordtreeType = \'double\';drawChart();">Double</button>' +
-					'<button type="button" class="btn btn-default" onclick="wordtreeType = \'suffix\';drawChart();">Suffix</button>' +
+					'<button type="button" class="btn btn-default" onclick="$.fn.WordCloudWithTree.defaults.wordtreeType = \'prefix\'; $.fn.WordCloudWithTree.drawChart();">Prefix</button>' +
+			 		'<button type="button" class="btn btn-default" onclick="$.fn.WordCloudWithTree.defaults.wordtreeType = \'double\'; $.fn.WordCloudWithTree.drawChart();">Double</button>' +
+					'<button type="button" class="btn btn-default" onclick="$.fn.WordCloudWithTree.defaults.wordtreeType = \'suffix\'; $.fn.WordCloudWithTree.drawChart();">Suffix</button>' +
 				'</div>' +
 				'<div class="btn-group" role="group" aria-label="...">' +
-					'<button type="button" class="btn btn-default" onclick="wordtreeType = \'suffix\'; wordtreeWord = \'\'; drawChart();">Reset</button>' +
+					'<button type="button" class="btn btn-default" onclick="$.fn.WordCloudWithTree.defaults.wordtreeType = \'suffix\'; $.fn.WordCloudWithTree.defaults.wordtreeRootWord = \'\'; $.fn.WordCloudWithTree.drawChart();">Reset</button>' +
 				'</div>' +
 			'</div>';
         container.append(wordTreeButtons);
         container.append("<div id='commentsWordTree'></div>");
         
-        wordtreeRootWord = settings.wordtreeRootWord;
-        wordtreeType = settings.wordtreeType;
+        $.fn.WordCloudWithTree.defaults.wordtreeRootWord = settings.wordtreeRootWord;
+        $.fn.WordCloudWithTree.defaults.wordtreeType = settings.wordtreeType;
         allComments = settings.allComments;
         commentWords = settings.commentWords;
         
@@ -59,23 +53,6 @@
         		commentWords.push(newArray);
         	}
         }
-    	
-//		function drawChart() {
-//	        var data = google.visualization.arrayToDataTable(
-//	        		allComments
-//	        );
-//
-//	        var options = {
-//	          wordtree: {
-//	            format: 'implicit',
-//	            word: wordtreeRootWord,
-//	            type: wordtreeType
-//	          }
-//	        };
-//
-//        	var chart = new google.visualization.WordTree(document.getElementById("commentsWordTree"));
-//        	chart.draw(data, options);
-//		}
 		
 		function setUpWordCloudData(words, dataContainer, weightDivider= 1){
 			var i;
@@ -93,7 +70,7 @@
 					wordcloudHover(this)
 				}, click: function(e){
 					console.log($(this).text());
-					wordtreeRootWord = $(this).text(); 
+					$.fn.WordCloudWithTree.defaults.wordtreeRootWord = $(this).text(); 
 					$.fn.WordCloudWithTree.drawChart()
 				}};
 			}
@@ -131,12 +108,20 @@
 	        var options = {
 	          wordtree: {
 	            format: 'implicit',
-	            word: wordtreeRootWord,
-	            type: wordtreeType
+	            word: $.fn.WordCloudWithTree.defaults.wordtreeRootWord,
+	            type: $.fn.WordCloudWithTree.defaults.wordtreeType
 	          }
 	        };
 
       	var chart = new google.visualization.WordTree(document.getElementById("commentsWordTree"));
       	chart.draw(data, options);
     };
+    
+	 $.fn.WordCloudWithTree.defaults = {
+			 // These are the defaults.
+	    	wordtreeRootWord: wordtreeRootWord,
+	    	wordtreeType: wordtreeType,
+	    	allComments: allComments,
+	    	commentWords: commentWords	
+		 };
 }( jQuery ));
