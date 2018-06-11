@@ -94,7 +94,7 @@
 				}, click: function(e){
 					console.log($(this).text());
 					wordtreeRootWord = $(this).text(); 
-					drawChart();
+					$.fn.WordCloudWithTree.drawChart()
 				}};
 			}
 		}
