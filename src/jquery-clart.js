@@ -37,7 +37,7 @@
 			'</div>';
         container.append(wordTreeButtons);
         container.append("<div id='commentsWordTree'></div>");
-        container.append('<label class="copyrightLabel" style="position:absolute;bottom:-5px;left:0px;right:0px;height:30px;background:#9B9B9B;padding:5px;color:white;text-align:center;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);">&copy; CASLS Language Analytics & Reporting Tools</label>');
+        container.append('<label class="copyrightLabel" style="position:absolute;bottom:-5px;left:0px;right:0px;height:30px;padding:5px 15px 5px 15px;color:#9B9B9B;text-align:right;">&copy; CASLS Language Analytics & Reporting Tools</label>');
         
         
         if(commentWords.length == 0){
