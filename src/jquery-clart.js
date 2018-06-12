@@ -17,15 +17,15 @@
     	plugin.wordCloud = Object.assign({}, plugin.wordCloud, settings.wordCloud);
     	
         var container = $(this);
-        container.css("position","relative");
-        container.css("padding","10px 10px 40px 10px");
-        container.css("box-shadow","0 2px 8px 0 rgba(0,0,0,0.2)");
-        container.css("background-color","#ffffff");
+//        container.css("position","relative");
+//        container.css("padding","10px 10px 40px 10px");
+//        container.css("box-shadow","0 2px 8px 0 rgba(0,0,0,0.2)");
+//        container.css("background-color","#ffffff");
 //        container.css("margin","20px");
         container.append(chartTitle);
         container.append("<div id='commentsWordCloud'></div>");
         var wordTreeButtons = 
-        	'<div class="btn-toolbar" role="toolbar" aria-label="..." style="width:270px;margin:0 auto;">' + 
+        	'<div class="btn-toolbar" role="toolbar" aria-label="..." style="">' + 
 				'<div class="btn-group" role="group" aria-label="...">' + 
 					'<button type="button" class="btn btn-default" onclick="$.fn.WordCloudWithTree.wordTree.type = \'prefix\'; $.fn.WordCloudWithTree.drawWordTree();">Prefix</button>' +
 			 		'<button type="button" class="btn btn-default" onclick="$.fn.WordCloudWithTree.wordTree.type = \'double\'; $.fn.WordCloudWithTree.drawWordTree();">Double</button>' +
@@ -37,7 +37,7 @@
 			'</div>';
         container.append(wordTreeButtons);
         container.append("<div id='commentsWordTree'></div>");
-        container.append('<label class="copyrightLabel" style="position:absolute;bottom:-5px;left:0px;right:0px;height:30px;background:#9B9B9B;padding:5px;color:white;text-align:center;">&copy; CASLS Language Analytics & Reporting Tools</label>');
+        container.append('<label class="copyrightLabel" style="position:absolute;bottom:-5px;left:0px;right:0px;height:30px;background:#9B9B9B;padding:5px;color:white;text-align:center;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);">&copy; CASLS Language Analytics & Reporting Tools</label>');
         
         
         if(commentWords.length == 0){
