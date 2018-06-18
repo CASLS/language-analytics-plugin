@@ -150,4 +150,101 @@
 				height: 350,
 				colors: ["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"].reverse()
 		};
+	 
+	 
+	 $.fn.commentInteractionsWidget = function(options) {
+		 // This is the easiest way to have default options.
+		 var settings = $.extend({}, $.fn.commentInteractionsWidget.defaults, options );
+		 var widget = $.fn.commentInteractionsWidget;
+		 
+		 var commentCountData = [];
+		 var commentWordCountData = [];
+		 var commentAverageWordsPerComment = [];
+		 var projectLabels = [];
+		 
+		 for(key in settings.commentsByProject){
+			 projectLabels.push(key);
+			 var pComments = settings.commentsByProject[key];
+			 var commentsCounts = pComments.length;
+			 commentCountData.push(commentsCounts);
+			 var pWordCount = 0;
+			 var pCommentCount = 0;
+			 var i;
+			 for(i in pComments){
+				 var comment = pComments[i];
+				 var commentWords = comment.split(" ");
+				 pWordCount += commentWords.length;
+				 pCommentCount += 1;
+			 }
+			 var averageWordsPerComment = (pWordCount / pCommentCount).toFixed(2);
+			 commentWordCountData.push(pWordCount);
+			 commentAverageWordsPerComment.push(averageWordsPerComment);
+		 }
+	        
+		 var container = $(this);
+		 
+		 $(document).ready(function(){
+			 container.append(settings.chartTitle);
+			 container.append('<canvas id="projectInteractions" width="100%" height="100%"></canvas>');
+			 container.append('<label class="copyrightLabel" style="position:absolute;bottom:-5px;left:0px;right:0px;height:30px;padding:5px 15px 5px 15px;color:#9B9B9B;text-align:right;">&copy; CASLS Language Analytics & Reporting Tools</label>');
+			 var ctx = document.getElementById("projectInteractions");
+			 var chart1 = new Chart(ctx,{
+			    type: 'bar',
+			    data: {
+			    	labels: projectLabels,
+			    	datasets: [
+				        {
+					        type: "line",
+					    	label: "Avg # of words per comment",
+					    	fill: false,
+					    	borderColor: "#EB2060",
+					    	backgroundColor: "#EB2060",
+				            data: commentAverageWordsPerComment,
+				        },
+			    		{
+					    	label: "Total comments",
+					    	fill: false,
+					    	borderColor: "#26A9E0",
+					    	backgroundColor: "#26A9E0",
+				            data: commentCountData,
+				        },
+				        {
+					        type: "line",
+					    	label: "# of words",
+					    	fill: false,
+					    	borderColor: "#8BC53F",
+					    	backgroundColor: "#8BC53F",
+				            data: commentWordCountData,
+				        },
+				    ]
+				},
+			    options: {
+			    	maintainAspectRatio: false,
+				}
+			});
+			 
+		 });
+		 return this;
+	 };
+	 
+	 $.fn.commentInteractionsWidget.defaults = {
+		commentsByProject: {
+					"Project 1" : [
+						"This is a test comment",
+						"This is another test comment",
+						"This is a third test comment"
+					],
+					"Project 2" : [
+						"This is a test comment woot",
+						"This is another test",
+						"This is a third"
+					],
+					"Project 3" : [
+						"This is a test comment woot",
+						"This is another test test",
+						"This is a third fourth fifth sixth"
+					],
+				},
+	 	chartTitle: "<h3 style='text-align:center;'>Project Interactions</h3>"
+	 };
 }( jQuery ));
