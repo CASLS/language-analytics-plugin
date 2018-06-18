@@ -29,6 +29,9 @@ You must include the javascript dependencies.
 	<script src="../jQCloud/dist/jqcloud.min.js" charset="utf-8"></script>
 	<link href="../jQCloud/dist/jqcloud.min.css" rel="stylesheet">
 	
+	<!-- ChartsJS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+	
 	<!-- jQuery CLART Plugin -->
 	<script src="../src/jquery-clart.js" charset="utf-8"></script>
 </head>
@@ -52,6 +55,10 @@ $(document).ready(function(){
 		},
 		chartTitle: "<label style='position: absolute;top: 0px;left: 0px;background-color: #26A9E0;color: white;width: 100%;padding: 0px;margin-bottom: 0px;text-align:center;'>Class</label><h2 style='text-align:center;'>My Title</h2>",
 		allComments: [["Phrases"],["Thanks!"],["Why do you think it's great? I'm curious."],["fdsafdsafdsa"],["fewrewqrfads"],["What no pictures in your office?\u00a0 Ask the boss for a few bucks for posters ;)"],["This is my test comment."],["This project is great."],["Write a short paragraph describing some of your activities this week. Talk about what you do every day or every week, as well as what you only do on certain days.\u00a0"],["Testing file upload from front end.Test PDF\r\n\r\n\u00a0"],["Est\u00e1s muy ocupado, Roberto.\u00a0"],["This is very cool"],["fdsafdsa"],["What can I say?\u00a0 It looks like my face broke the video but this audio recording worked just fine.\u00a0"]],
+	});
+	
+	$("#commentInteractionsWidget").commentInteractionsWidget({
+		commentsByProject: {"Proyecto 1-1":["This looks great!","Thanks!","Why do you think it's great? I'm curious.","fdsafdsafdsa","","fsadfdsafdsa","fdsafdsafsda","fdsafdsafsdafdsafdsa","Est\u00e1s muy ocupado, Roberto.\u00a0","This is very cool","fdsafdsa","fdsafdsa","Write a short paragraph describing some of your activities this week. Talk about what you do every day or every week, as well as what you only do on certain days.\u00a0"],"Proyecto 1-2":["fewrewqrfads"],"Proyecto 2-1":["What no pictures in your office?\u00a0 Ask the boss for a few bucks for posters ;)","testing a editted commentfdsafdas","fdsafdsa fdfadsfa fdsafdsa"],"Proyecto 3-1":["What can I say?\u00a0 It looks like my face broke the video but this audio recording worked just fine.\u00a0"],"Proyecto 4-1":["This is my test comment.","This project is great."],"Proyecto 5-1":["Write a short paragraph describing some of your activities this week. Talk about what you do every day or every week, as well as what you only do on certain days.\u00a0","Testing file upload from front end.Test PDF\r\n\r\n\u00a0","Testing file upload from front end.Test PDF\r\n\r\n\u00a0"]}
 	});
 });
 ```
