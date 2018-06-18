@@ -30,17 +30,17 @@
 
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-sm-offset-3" style="box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);margin-top:20px;margin-bottom:20px;">
-		<div id="wordCloudWithTree" style="margin-top:30px;padding:10px 10px 40px 10px;"></div>
+		<div id="collocationWidget" style="margin-top:30px;padding:10px 10px 40px 10px;"></div>
 	</div>
 </div>
 
 
 <script type="text/javascript">
 $(document).ready(function(){
-	var width = $('#wordCloudWithTree').parent().css("width");
+	var width = $('#collocationWidget').parent().css("width");
 	width = width.replace("px", "") - 60;
 
-	$("#wordCloudWithTree").WordCloudWithTree({
+	$("#collocationWidget").collocationWidget({
 		chartTitle: "<label style='position: absolute;top: 0px;left: 0px;background-color: #26A9E0;color: white;width: 100%;padding: 0px;margin-bottom: 0px;text-align:center;'>Class</label><h2 style='text-align:center;'>My Title</h2>",
 		allComments: [["Phrases"],["Thanks!"],["Why do you think it's great? I'm curious."],["fdsafdsafdsa"],["fewrewqrfads"],["What no pictures in your office?\u00a0 Ask the boss for a few bucks for posters ;)"],["This is my test comment."],["This project is great."],["Write a short paragraph describing some of your activities this week. Talk about what you do every day or every week, as well as what you only do on certain days.\u00a0"],["Testing file upload from front end.Test PDF\r\n\r\n\u00a0"],["Est\u00e1s muy ocupado, Roberto.\u00a0"],["This is very cool"],["fdsafdsa"],["What can I say?\u00a0 It looks like my face broke the video but this audio recording worked just fine.\u00a0"]],
 		/* commentWords: [{"text":"","weight":1},{"text":";)","weight":1},{"text":"Ask","weight":1},{"text":"Est\u00e1s","weight":1},{"text":"I","weight":1},{"text":"I'm","weight":1},{"text":"It","weight":1},{"text":"PDF\r\n\r\n\u00a0","weight":1},{"text":"Roberto.\u00a0","weight":1},{"text":"Talk","weight":1},{"text":"Testing","weight":1},{"text":"Thanks!","weight":1},{"text":"This","weight":3},{"text":"What","weight":2},{"text":"Why","weight":1},{"text":"Write","weight":1},{"text":"a","weight":2},{"text":"about","weight":1},{"text":"activities","weight":1},{"text":"as","weight":2},{"text":"audio","weight":1},{"text":"boss","weight":1},{"text":"broke","weight":1},{"text":"bucks","weight":1},{"text":"but","weight":1},{"text":"can","weight":1},{"text":"certain","weight":1},{"text":"comment.","weight":1},{"text":"cool","weight":1},{"text":"curious.","weight":1},{"text":"day","weight":1},{"text":"days.\u00a0","weight":1},{"text":"describing","weight":1},{"text":"do","weight":3},{"text":"end.Test","weight":1},{"text":"every","weight":2},{"text":"face","weight":1},{"text":"fdsafdsa","weight":1},{"text":"fdsafdsafdsa","weight":1},{"text":"few","weight":1},{"text":"fewrewqrfads","weight":1},{"text":"file","weight":1},{"text":"fine.\u00a0","weight":1},{"text":"for","weight":2},{"text":"from","weight":1},{"text":"front","weight":1},{"text":"great.","weight":1},{"text":"great?","weight":1},{"text":"in","weight":1},{"text":"is","weight":3},{"text":"it's","weight":1},{"text":"just","weight":1},{"text":"like","weight":1},{"text":"looks","weight":1},{"text":"muy","weight":1},{"text":"my","weight":2},{"text":"no","weight":1},{"text":"ocupado,","weight":1},{"text":"of","weight":1},{"text":"office?\u00a0","weight":1},{"text":"on","weight":1},{"text":"only","weight":1},{"text":"or","weight":1},{"text":"paragraph","weight":1},{"text":"pictures","weight":1},{"text":"posters","weight":1},{"text":"project","weight":1},{"text":"recording","weight":1},{"text":"say?\u00a0","weight":1},{"text":"short","weight":1},{"text":"some","weight":1},{"text":"test","weight":1},{"text":"the","weight":2},{"text":"think","weight":1},{"text":"this","weight":2},{"text":"upload","weight":1},{"text":"very","weight":1},{"text":"video","weight":1},{"text":"week,","weight":1},{"text":"week.","weight":1},{"text":"well","weight":1},{"text":"what","weight":2},{"text":"worked","weight":1},{"text":"you","weight":3},{"text":"your","weight":2}], */

@@ -4,10 +4,10 @@
 	var wordCountArray = {};
 	var chartTitle = "<h3 style='text-align:center;'>Word Cloud - Word Tree</h3>";
 	
-    $.fn.WordCloudWithTree = function(options) {
+    $.fn.collocationWidget = function(options) {
     	// This is the easiest way to have default options.
-        var settings = $.extend({}, $.fn.WordCloudWithTree.defaults, options );
-        var plugin = $.fn.WordCloudWithTree;
+        var settings = $.extend({}, $.fn.collocationWidget.defaults, options );
+        var plugin = $.fn.collocationWidget;
 
         allComments = settings.allComments;
         commentWords = settings.commentWords;
@@ -27,12 +27,12 @@
         var wordTreeButtons = 
         	'<div class="btn-toolbar" role="toolbar" aria-label="..." style="">' + 
 				'<div class="btn-group" role="group" aria-label="...">' + 
-					'<button type="button" class="btn btn-default" onclick="$.fn.WordCloudWithTree.wordTree.type = \'prefix\'; $.fn.WordCloudWithTree.drawWordTree();">Prefix</button>' +
-			 		'<button type="button" class="btn btn-default" onclick="$.fn.WordCloudWithTree.wordTree.type = \'double\'; $.fn.WordCloudWithTree.drawWordTree();">Double</button>' +
-					'<button type="button" class="btn btn-default" onclick="$.fn.WordCloudWithTree.wordTree.type = \'suffix\'; $.fn.WordCloudWithTree.drawWordTree();">Suffix</button>' +
+					'<button type="button" class="btn btn-default" onclick="$.fn.collocationWidget.wordTree.type = \'prefix\'; $.fn.collocationWidget.drawWordTree();">Prefix</button>' +
+			 		'<button type="button" class="btn btn-default" onclick="$.fn.collocationWidget.wordTree.type = \'double\'; $.fn.collocationWidget.drawWordTree();">Double</button>' +
+					'<button type="button" class="btn btn-default" onclick="$.fn.collocationWidget.wordTree.type = \'suffix\'; $.fn.collocationWidget.drawWordTree();">Suffix</button>' +
 				'</div>' +
 				'<div class="btn-group" role="group" aria-label="...">' +
-					'<button type="button" class="btn btn-default" onclick="$.fn.WordCloudWithTree.wordTree.type = \'suffix\'; $.fn.WordCloudWithTree.wordTree.word = \'\'; $.fn.WordCloudWithTree.drawWordTree();">Reset</button>' +
+					'<button type="button" class="btn btn-default" onclick="$.fn.collocationWidget.wordTree.type = \'suffix\'; $.fn.collocationWidget.wordTree.word = \'\'; $.fn.collocationWidget.drawWordTree();">Reset</button>' +
 				'</div>' +
 			'</div>';
         container.append(wordTreeButtons);
@@ -80,8 +80,8 @@
 					wordcloudHover(this)
 				}, click: function(e){
 					console.log($(this).text());
-					$.fn.WordCloudWithTree.wordTree.word = $(this).text(); 
-					$.fn.WordCloudWithTree.drawWordTree()
+					$.fn.collocationWidget.wordTree.word = $(this).text(); 
+					$.fn.collocationWidget.drawWordTree()
 				}};
 			}
 		}
@@ -96,48 +96,48 @@
 
 			//Initialize Google Charts - Wordtree        
         	google.charts.load('current', {packages:['wordtree']});
-        	google.charts.setOnLoadCallback($.fn.WordCloudWithTree.drawWordTree)
+        	google.charts.setOnLoadCallback($.fn.collocationWidget.drawWordTree)
 			
         	//Draw the word cloud.
-        	$.fn.WordCloudWithTree.drawWordCloud();
+        	$.fn.collocationWidget.drawWordCloud();
 		});
 		
         return this;
     };
     
-    $.fn.WordCloudWithTree.drawWordCloud = function(){
+    $.fn.collocationWidget.drawWordCloud = function(){
     	$('#commentsWordCloud').jQCloud(commentWords, {
-			  width: $.fn.WordCloudWithTree.wordCloud.width,
-			  height: $.fn.WordCloudWithTree.wordCloud.height,
-			  colors: $.fn.WordCloudWithTree.wordCloud.colors
+			  width: $.fn.collocationWidget.wordCloud.width,
+			  height: $.fn.collocationWidget.wordCloud.height,
+			  colors: $.fn.collocationWidget.wordCloud.colors
 			});
     };
 	
-    $.fn.WordCloudWithTree.drawWordTree = function(){
+    $.fn.collocationWidget.drawWordTree = function(){
     	  var data = google.visualization.arrayToDataTable(allComments);
 
 	        var options = {
 	          wordtree: {
-	            format: $.fn.WordCloudWithTree.wordTree.format,
-	            word: $.fn.WordCloudWithTree.wordTree.word,
-	            type: $.fn.WordCloudWithTree.wordTree.type
+	            format: $.fn.collocationWidget.wordTree.format,
+	            word: $.fn.collocationWidget.wordTree.word,
+	            type: $.fn.collocationWidget.wordTree.type
 	          },
-	          width: $.fn.WordCloudWithTree.wordTree.width,
-	          height: $.fn.WordCloudWithTree.wordTree.height,
+	          width: $.fn.collocationWidget.wordTree.width,
+	          height: $.fn.collocationWidget.wordTree.height,
 	        };
 
       	var chart = new google.visualization.WordTree(document.getElementById("commentsWordTree"));
       	chart.draw(data, options);
     };
     
-	 $.fn.WordCloudWithTree.defaults = {
+	 $.fn.collocationWidget.defaults = {
 			 // These are the defaults.
 	    	allComments: allComments,
 	    	commentWords: commentWords,
 	    	chartTitle: chartTitle
 		 };
 	
-	 $.fn.WordCloudWithTree.wordTree = {
+	 $.fn.collocationWidget.wordTree = {
 				width: 350,
 				height: 350,
 				format: 'implicit',
@@ -145,7 +145,7 @@
 	            type: 'suffix'
 		};
 	 
-	 $.fn.WordCloudWithTree.wordCloud = {
+	 $.fn.collocationWidget.wordCloud = {
 				width: 350,
 				height: 350,
 				colors: ["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"].reverse()

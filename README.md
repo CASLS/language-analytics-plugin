@@ -1,6 +1,6 @@
 CASLS Language Analytics & Reporting Tools
 ========================
-This project contains a jQuery plugin that will render a word-cloud and word-tree.
+This project contains a jQuery plugin that will render a collocation widget that includes a word-cloud and word-tree.
 
 ## Dependencies
 * jQuery [JS Library](https://jquery.com)
@@ -37,10 +37,10 @@ You must include the javascript dependencies.
 Then initialize the Word Cloud - Word Tree chart.
 ```javascript
 $(document).ready(function(){
-	var width = $('#wordCloudWithTree').parent().css("width");
+	var width = $('#collocationWidget').parent().css("width");
 	width = width.replace("px", "") - 60;
 	
-	$("#wordCloudWithTree").WordCloudWithTree({
+	$("#collocationWidget").collocationWidget({
 		wordTree: {
 			height:600,
 			width: width
