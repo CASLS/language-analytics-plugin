@@ -193,6 +193,7 @@
 			 commentCountData.push(commentsCounts);
 			 var pWordCount = 0;
 			 var pCommentCount = 0;
+			 var averageWordsPerComment = 0;
 			 var i;
 			 for(i in pComments){
 				 var comment = pComments[i];
@@ -200,7 +201,13 @@
 				 pWordCount += commentWords.length;
 				 pCommentCount += 1;
 			 }
-			 var averageWordsPerComment = (pWordCount / pCommentCount).toFixed(2);
+			 if(pComments.length == 0){
+				 pWordCount = 0;
+				 pCommentCount = 0;
+				 averageWordsPerComment = 0;
+			 }else{
+				 averageWordsPerComment = (pWordCount / pCommentCount).toFixed(2);
+			 }
 			 commentWordCountData.push(pWordCount);
 			 commentAverageWordsPerComment.push(averageWordsPerComment);
 		 }
