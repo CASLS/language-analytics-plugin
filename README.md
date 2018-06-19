@@ -64,6 +64,9 @@ $(document).ready(function(){
 });
 ```
 
+## Screenshot
+<img src="./screenshots/jQuery Plugin Example 2018-6-18.png" style="width:100%;max-width:600px;"/>
+
 ## License
 Copyright 2018 Center for Applied Second Language Studies
 
