@@ -2,12 +2,12 @@
  * CASLS Language Analytics & Reporting Tools: jquery-clart.js v1.0.1
  * http://casls-stash.uoregon.edu/projects/CLART/repos/jquery-language-analytics-plugin
  * ========================================================================
- * Copyright 2018 Center for Applied Second Language Studies
+ * Copyright 2018 University of Oregon
  * Author: Carl Burnstein
  * Licensed under Apache License 2.0 (https://www.apache.org/licenses/LICENSE-2.0.html)
  * ======================================================================== 
  * 
- * Copyright 2018 Center for Applied Second Language Studies
+ * Copyright 2018 University of Oregon
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
