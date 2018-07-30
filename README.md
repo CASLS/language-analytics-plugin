@@ -1,6 +1,6 @@
 CASLS Language Analytics & Reporting Tools
 ========================
-This project contains a jQuery plugin that will render a collocation widget that includes a word-cloud and word-tree.
+This project contains a two jQuery plugins.  The collocation widget includes a word-cloud and word-tree showing the relationship between commonly used words and how the word selected is used in context.  The comment interactions widget renders analytics related to comments provided including number of comments and average words per comment.
 
 ## Dependencies
 * jQuery [JS Library](https://jquery.com)
